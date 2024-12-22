@@ -1,5 +1,5 @@
 Dans la def get_strategy : 
-Pourquoi on met rien pour la strategy free ? 
+Pourquoi on met rien pour la strategy free ? (je ne sais pas comment gerer Free car son choix change pendant le jeu)
 pour moi c'est :
     contribute, accept = if propose TRUE -> TRUE
                 else False
@@ -7,4 +7,5 @@ pour moi c'est :
 
 
 def play : 
-Pq on prend pas en compte le FREE ? 
+Pq on prend pas en compte le FREE ? (je voulais en parler avec vous )
+
