@@ -1,0 +1,10 @@
+Dans la def get_strategy : 
+Pourquoi on met rien pour la strategy free ? 
+pour moi c'est :
+    contribute, accept = if propose TRUE -> TRUE
+                else False
+    propose = False
+
+
+def play : 
+Pq on prend pas en compte le FREE ? 
