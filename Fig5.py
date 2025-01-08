@@ -29,7 +29,7 @@ delta = 6.
 
 
 # Plot Fig 5.a
-nb_points = 10
+nb_points = 2
 eps_values_a_b = np.linspace(0., 1., nb_points)
 r_values = np.linspace(2., 5., nb_points)
 average_F = np.zeros((nb_points, nb_points), dtype = float)
@@ -57,7 +57,6 @@ def calcul_optimal(args):
 
 
 # Plot Fig 5.c
-c = 1.4
 r_c = 2.5
 eps_values_c_d = np.linspace(0., 2., nb_points)
 delta_values = np.linspace(0., 6., nb_points)
@@ -94,8 +93,8 @@ if __name__ == '__main__':
 
     # Same for fig a and b
     # --- Générer les arguments ---
-    args_list = [(i, j, eps_values_a_b[i], r_values[j]) 
-                 for i in range(nb_points) for j in range(nb_points)]
+    #args_list = [(i, j, eps_values_a_b[i], r_values[j]) 
+    #             for i in range(nb_points) for j in range(nb_points)]
 
 
     # For Fig 5.a
@@ -108,12 +107,12 @@ if __name__ == '__main__':
 #
 #
 #    # For Fig 5.b
-#    c = 1.4
+#    c = 0.65
 #    with Pool(processes=cpu_count()) as pool:
 #        results = list(tqdm(pool.imap(calcul_optimal, args_list), total=len(args_list)))
 #    for i, j, opti in results:
 #        optimal_F[i, j] = opti
-#
+
 
 
     # Generate ars for fig c and d 
