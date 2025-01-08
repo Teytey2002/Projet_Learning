@@ -12,6 +12,7 @@ from egttools.plotting import draw_invasion_diagram
 from multiprocessing import Pool, cpu_count 
 from multiprocessing import freeze_support
 from tqdm import tqdm
+import time
 
 
 class PGGWithLongCommitment29(AbstractNPlayerGame):
@@ -113,7 +114,7 @@ class PGGWithLongCommitment29(AbstractNPlayerGame):
         payoffs_container = np.zeros(shape=(self.nb_strategies_,), dtype=np.float64)
 
         # Loop over all possible group configurations
-        for i in tqdm(range(self.nb_group_configurations_)):
+        for i in range(self.nb_group_configurations_):
             # Generate a sample group composition
             group_composition = sample_simplex(i, self.group_size_, self.nb_strategies_)
             group_composition = np.array(group_composition, dtype=float)
@@ -173,11 +174,14 @@ if __name__ == '__main__':
     args_list = [(i, j, R_values[i], r_values[j]) 
                  for i in range(len(R_values)) for j in range(len(r_values))]
 
-
-    with Pool(processes=cpu_count()) as pool:
+    start_time = time.time()
+    with Pool(processes=18) as pool:
         results = list(tqdm(pool.imap(calculate_optimal_prime, args_list), total=len(args_list)))
     # --- Remplir la matrice avec les résultats ---
     for i, j, optimal in results:
         optimal_F_prime[i, j] = optimal
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"Temps d'exécution : {execution_time:.2f} secondes")
 
     print(optimal_F_prime)

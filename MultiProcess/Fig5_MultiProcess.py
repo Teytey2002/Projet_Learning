@@ -13,7 +13,7 @@ from egttools.plotting import draw_invasion_diagram
 from multiprocessing import Pool, cpu_count 
 from multiprocessing import freeze_support
 
-from pgg_game import PGGWithCommitment
+from Projet_Learning.MultiProcess.pgg_game import PGGWithCommitment
 
 
 # # Parameters of the game:
@@ -29,7 +29,7 @@ delta = 6.
 
 
 # Plot Fig 5.a
-nb_points = 2
+nb_points = 10
 eps_values_a_b = np.linspace(0., 1., nb_points)
 r_values = np.linspace(2., 5., nb_points)
 average_F = np.zeros((nb_points, nb_points), dtype = float)

@@ -107,7 +107,7 @@ class PGGWithCommitment(AbstractNPlayerGame):
 
 
 # --- Simulation pour une valeur donnée de c ---
-#def simulate_for_c(c):
+def simulate_for_c(c):
     group_size = 5
     Z = 100
     beta = 0.25
