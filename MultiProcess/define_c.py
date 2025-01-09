@@ -111,7 +111,8 @@ def simulate_for_c(c):
     group_size = 5
     Z = 100
     beta = 0.25
-    r = 4.
+    #r = 4.
+    r = 2.5
     eps = 0.25
     delta = 2.
 
@@ -137,7 +138,7 @@ def simulate_for_c(c):
                           ax=ax)
     plt.axis('off')
     plt.title(f"c = {c}")
-    plt.savefig(f"output_c_{c:.2f}.png")  # Sauvegarder chaque figure
+    plt.savefig(f"output_c_r25_{c:.2f}.png")  # Sauvegarder chaque figure
     plt.close()
     return f"Simulation terminée pour c = {c}"
 
@@ -145,7 +146,7 @@ def simulate_for_c(c):
 # --- Multiprocessing avec Pool ---
 if __name__ == "__main__":
     # Définir la plage de valeurs pour c
-    c_values = np.arange(0.5, 0.75, 0.005)
+    c_values = np.arange(0.5, 1.5, 0.05)
 
     # Utiliser tous les cœurs disponibles
     with Pool(processes=cpu_count()) as pool:

@@ -175,7 +175,7 @@ if __name__ == '__main__':
                  for i in range(len(R_values)) for j in range(len(r_values))]
 
     start_time = time.time()
-    with Pool(processes=18) as pool:
+    with Pool(processes=13) as pool:
         results = list(tqdm(pool.imap(calculate_optimal_prime, args_list), total=len(args_list)))
     # --- Remplir la matrice avec les résultats ---
     for i, j, optimal in results:

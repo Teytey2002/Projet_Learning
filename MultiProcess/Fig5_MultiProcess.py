@@ -13,7 +13,7 @@ from egttools.plotting import draw_invasion_diagram
 from multiprocessing import Pool, cpu_count 
 from multiprocessing import freeze_support
 
-from Projet_Learning.MultiProcess.pgg_game import PGGWithCommitment
+from pgg_game import PGGWithCommitment
 
 
 # # Parameters of the game:
@@ -91,20 +91,18 @@ if __name__ == '__main__':
     freeze_support()
 
 
-    # Same for fig a and b
-    # --- Générer les arguments ---
-    #args_list = [(i, j, eps_values_a_b[i], r_values[j]) 
-    #             for i in range(nb_points) for j in range(nb_points)]
-
-
-    # For Fig 5.a
-    # --- Exécuter avec Multiprocessing ---
-    #with Pool(processes=cpu_count()) as pool:
-    #    results = list(tqdm(pool.imap(calcul_average, args_list), total=len(args_list)))
-    ## --- Remplir la matrice avec les résultats ---
-    #for i, j, avg in results:
-    #    average_F[i, j] = avg
-#
+#    # Same for fig a and b
+#    # --- Générer les arguments ---
+#    args_list = [(i, j, eps_values_a_b[i], r_values[j]) 
+#                 for i in range(nb_points) for j in range(nb_points)]
+#     
+#    # For Fig 5.a
+#    # --- Exécuter avec Multiprocessing ---
+#    with Pool(processes=cpu_count()) as pool:
+#        results = list(tqdm(pool.imap(calcul_average, args_list), total=len(args_list)))
+#    # --- Remplir la matrice avec les résultats ---
+#    for i, j, avg in results:
+#        average_F[i, j] = avg#
 #
 #    # For Fig 5.b
 #    c = 0.65
@@ -114,13 +112,12 @@ if __name__ == '__main__':
 #        optimal_F[i, j] = opti
 
 
-
     # Generate ars for fig c and d 
     args_list_c_d = [(i, j, eps_values_c_d[i], delta_values[j]) 
                  for i in range(nb_points) for j in range(nb_points)]
     
     # For Fig 5.c
-    c = 0.65
+    c = 1.4
     with Pool(processes=cpu_count()) as pool:
         results = list(tqdm(pool.imap(calcul_optimal_r25, args_list_c_d), total=len(args_list_c_d)))
     for i, j, opti in results:
@@ -136,26 +133,24 @@ if __name__ == '__main__':
 
 
 
-    ## --- Vérifier les résultats ---
-    #print("Plot Fig 5.a")
-    #print("Matrice des moyennes F :")
-    #print(average_F)
-    #print("Min : ", np.min(average_F))
-    #print("Max : ", np.max(average_F))
-#
-    ## --- Affichage des résultats ---
-    #plt.figure(figsize=(6, 6), dpi=150)
-    #levels = np.linspace(3.0, 4.0, 11)
-    #contour = plt.contourf(eps_values_a_b, r_values, average_F.T, levels=levels, cmap='viridis')
-    #contour_lines = plt.contour(eps_values_a_b, r_values, average_F.T, levels=levels, colors='white', linewidths=0.5)
-    #plt.clabel(contour_lines, inline=True, fontsize=8, fmt="%.1f")
-    #plt.xlabel(r'Arrangement cost, $\epsilon$')
-    #plt.ylabel('Multiplication factor, r')
-    #plt.title('Average level of commitment (COMPF) - Fig 5.a')
-    #plt.tight_layout()
-    #plt.show()
-#
-#
+#    # --- Vérifier les résultats ---
+#    print("Plot Fig 5.a")
+#    print("Matrice des moyennes F :")
+#    print(average_F)
+#    print("Min : ", np.min(average_F))
+#    print("Max : ", np.max(average_F))
+#   
+#   # --- Affichage des résultats ---
+#    plt.figure(figsize=(6, 6), dpi=150)
+#    levels = np.linspace(3.0, 4.0, 11)
+#    contour = plt.contourf(eps_values_a_b, r_values, average_F.T, levels=levels, cmap='viridis')
+#    contour_lines = plt.contour(eps_values_a_b, r_values, average_F.T, levels=levels, colors='white', linewidths=0.5)
+#    plt.clabel(contour_lines, inline=True, fontsize=8, fmt="%.1f")
+#    plt.xlabel(r'Arrangement cost, $\epsilon$')
+#    plt.ylabel('Multiplication factor, r')
+#    plt.title('Average level of commitment (COMPF) - Fig 5.a')
+#    plt.tight_layout()
+#    plt.show()
 #
 #    print("Plot Fig 5.b")
 #    print("c " , c)
