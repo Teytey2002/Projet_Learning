@@ -69,6 +69,7 @@ def calcul_optimal_r25(args):
     transition_matrix,_ = evolver.calculate_transition_and_fixation_matrix_sml(beta)
     stationary_distribution = calculate_stationary_distribution(transition_matrix.transpose())
     opti = np.argmax(stationary_distribution[0:5]) + 1
+    print("For eps = ", eps, " and delta = ", delta, " the optimal F is ", opti)
     return i, j, opti
 
 # Plot Fig 5.d
@@ -82,6 +83,7 @@ def calcul_optimal_r40(args):
     transition_matrix,_ = evolver.calculate_transition_and_fixation_matrix_sml(beta)
     stationary_distribution = calculate_stationary_distribution(transition_matrix.transpose())
     opti = np.argmax(stationary_distribution[0:5]) + 1
+    print("For eps = ", eps, " and delta = ", delta, " the optimal F is ", opti)
     return i, j, opti
 
 
